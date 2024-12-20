@@ -1,0 +1,13 @@
+/* components/Button/Button.css */
+.custom-button {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .custom-button.selected {
+    background-color: #e0e0e0;
+    border-color: #666;
+  }

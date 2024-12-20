@@ -33,14 +33,14 @@ ul.navBarList {
 
 li.navBarAssets a {
     text-decoration: none; /* Quita subrayado */
-    color: #fcdb49; /* Color azul para los enlaces */
+    color: #c52424; /* Color azul para los enlaces */
     font-weight: bold;
     font-size: 16px;
     transition: color 0.3s ease; /* Transición suave */
 }
 
 li.navBarAssets a:hover {
-    color: #cfab08; /* Color al pasar el ratón */
+    color: #2f23d6; /* Color al pasar el ratón */
     text-decoration: underline; /* Subrayado al hacer hover */
 }
 
