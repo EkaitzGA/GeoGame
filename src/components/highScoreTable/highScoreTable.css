@@ -1,0 +1,165 @@
+.high-score-container {
+  background-color: black;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 28rem;
+  margin: 0 auto;
+  font-family: monospace;
+}
+
+.title {
+  color: #fcd34d; 
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.2em;
+}
+
+
+.current-score {
+  color: #fbbf24; 
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  letter-spacing: 0.2em;
+}
+
+.name-entry-container {
+  margin-bottom: 2rem;
+}
+
+.name-entry-title {
+  text-align: center;
+  color: #e879f9; 
+  margin-bottom: 1rem;
+}
+
+.name-entry-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 2.5rem;
+}
+
+.character-box {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.character-box--selected {
+  color: white;
+}
+
+.character-box--hidden {
+  color: transparent;
+}
+
+.character-box--normal {
+  color: white;
+}
+
+.instructions {
+  text-align: center;
+  color: #6b7280; 
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+
+.table-header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 0.5rem;
+  color: #e879f9; 
+  font-size: 1.25rem;
+  letter-spacing: 0.2em;
+}
+
+.score-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  letter-spacing: 0.2em;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Alineación de columnas */
+.table-header > div:first-child,
+.score-row > div:first-child {
+  width: 6rem;
+  text-align: left;
+}
+
+.table-header > div:nth-child(2),
+.score-row > div:nth-child(2) {
+  width: 6rem;
+  text-align: right;
+}
+
+.table-header > div:last-child,
+.score-row > div:last-child {
+  padding-left: 1rem;
+  text-align: left;
+}
+
+/* Colores para los rangos */
+.rank-1st { color: #ef4444; } 
+.rank-2nd { color: #f97316; } 
+.rank-3rd { color: #eab308; } 
+.rank-4th { color: #22c55e; } 
+.rank-5th { color: #06b6d4; } 
+.rank-6th { color: #ffffff; } 
+.rank-7th { color: #ffffff; }
+.rank-8th { color: #ffffff; } 
+.rank-9th { color: #ffffff; }
+.rank-10th { color: #ffffff; } 
+
+/* Botones */
+.buttons-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.try-again-button {
+  width: 100%;
+  background-color: #7f1d1d; 
+  color: #ef4444; 
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.try-again-button:hover {
+  background-color: #991b1b;
+}
+
+.exit-button {
+  width: 100%;
+  background-color: #1f2937; 
+  color: #9ca3af; 
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.exit-button:hover {
+  background-color: #374151;
+}
+
+.empty-score {
+  opacity: 0.5;
+}
+
+/* Espaciado general */
+.space-y-2 > * + * {
+  margin-top: 0.5rem;
+}
