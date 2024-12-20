@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { fetchAllCountries } from '../../utils/apiCall';
 import HomePage from '../homePage/homePage';
 import NavBar from '../navBar/navBar';
@@ -8,6 +8,7 @@ import NavBar from '../navBar/navBar';
 const Root = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const location = useLocation();
 
     useEffect(() => {
         const loadCountries = async () => {
@@ -36,7 +37,7 @@ const Root = () => {
                 <Outlet />
             </main>
             <footer>
-            {/* <Footer /> */}
+                {/* <Footer /> */}
             </footer>
         </>
     );

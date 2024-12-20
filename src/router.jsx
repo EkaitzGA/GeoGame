@@ -2,7 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "./components/root/root";
 import Flags from "./components/flagPage/flagPage";
 import Capitals from "./components/capitalPage/capitalPage";
-import Highscore from "./components/highScoreTable/highScoreTable";
+import ScoreBoard from "./components/highScoreTable/highScoreTable";
+
 
 
 const router = createBrowserRouter([
@@ -19,8 +20,8 @@ const router = createBrowserRouter([
           element: <Capitals />,
         },
         {
-            path: "highscore",
-            element: <Highscore />,
+            path: "scoreboard",
+            element: <ScoreBoard />,
           },
       ],
     },

@@ -1,0 +1,1 @@
+La lógica de highscore funciona bien pero al ir a la página de highscore solo tiene que mostrar la tabla. La lógica de introducir el nombre debe ir en el juego
