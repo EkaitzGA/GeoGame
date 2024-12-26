@@ -1,1 +1,1 @@
-La lógica de highscore funciona bien pero al ir a la página de highscore solo tiene que mostrar la tabla. La lógica de introducir el nombre debe ir en el juego
+Hay que comprobar que el componente de introducir la puntuación funcione ya que lo he separado de la tabla fija. Se introducirá en la lógica del juego, al final

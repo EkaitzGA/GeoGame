@@ -1,14 +1,45 @@
+.scoreboard-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(
+    45deg,
+    #000000 0%,
+    #000000 40%,
+    #990099 50%,
+    #000000 60%,
+    #000000 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Mejoramos el contenedor de puntuaciones */
 .high-score-container {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
   padding: 2rem;
   border-radius: 8px;
   max-width: 28rem;
-  margin: 0 auto;
   font-family: monospace;
+  position: relative;
+  z-index: 1;
+  box-shadow:
+    0 0 10px rgba(255, 0, 255, 0.2),
+    0 0 20px rgba(255, 0, 255, 0.1);
+  border: 1px solid #990099;
 }
 
 .title {
-  color: #fcd34d; 
+  color: #fcd34d;
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1rem;
@@ -17,7 +48,7 @@
 
 
 .current-score {
-  color: #fbbf24; 
+  color: #fbbf24;
   text-align: center;
   margin-bottom: 2rem;
   font-size: 1.25rem;
@@ -30,7 +61,7 @@
 
 .name-entry-title {
   text-align: center;
-  color: #e879f9; 
+  color: #e879f9;
   margin-bottom: 1rem;
 }
 
@@ -63,7 +94,7 @@
 
 .instructions {
   text-align: center;
-  color: #6b7280; 
+  color: #6b7280;
   margin-top: 1rem;
   font-size: 0.875rem;
 }
@@ -73,7 +104,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-bottom: 0.5rem;
-  color: #e879f9; 
+  color: #e879f9;
   font-size: 1.25rem;
   letter-spacing: 0.2em;
 }
@@ -87,35 +118,64 @@
 }
 
 /* Alineación de columnas */
-.table-header > div:first-child,
-.score-row > div:first-child {
+.table-header>div:first-child,
+.score-row>div:first-child {
   width: 6rem;
   text-align: left;
 }
 
-.table-header > div:nth-child(2),
-.score-row > div:nth-child(2) {
+.table-header>div:nth-child(2),
+.score-row>div:nth-child(2) {
   width: 6rem;
   text-align: right;
 }
 
-.table-header > div:last-child,
-.score-row > div:last-child {
+.table-header>div:last-child,
+.score-row>div:last-child {
   padding-left: 1rem;
   text-align: left;
 }
 
 /* Colores para los rangos */
-.rank-1st { color: #ef4444; } 
-.rank-2nd { color: #f97316; } 
-.rank-3rd { color: #eab308; } 
-.rank-4th { color: #22c55e; } 
-.rank-5th { color: #06b6d4; } 
-.rank-6th { color: #ffffff; } 
-.rank-7th { color: #ffffff; }
-.rank-8th { color: #ffffff; } 
-.rank-9th { color: #ffffff; }
-.rank-10th { color: #ffffff; } 
+.rank-1st {
+  color: #ef4444;
+}
+
+.rank-2nd {
+  color: #f97316;
+}
+
+.rank-3rd {
+  color: #eab308;
+}
+
+.rank-4th {
+  color: #22c55e;
+}
+
+.rank-5th {
+  color: #06b6d4;
+}
+
+.rank-6th {
+  color: #ffffff;
+}
+
+.rank-7th {
+  color: #ffffff;
+}
+
+.rank-8th {
+  color: #ffffff;
+}
+
+.rank-9th {
+  color: #ffffff;
+}
+
+.rank-10th {
+  color: #ffffff;
+}
 
 /* Botones */
 .buttons-container {
@@ -127,8 +187,8 @@
 
 .try-again-button {
   width: 100%;
-  background-color: #7f1d1d; 
-  color: #ffffff; 
+  background-color: #7f1d1d;
+  color: #ffffff;
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
@@ -136,10 +196,10 @@
   transition: background-color 0.3s;
 }
 
-.scoreboard-button{
+.scoreboard-button {
   width: 100%;
-  background-color: #0b692b; 
-  color: #ffffff; 
+  background-color: #0b692b;
+  color: #ffffff;
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
@@ -150,14 +210,15 @@
 .scoreboard-button:hover {
   background-color: #138338;
 }
+
 .try-again-button:hover {
   background-color: #991b1b;
 }
 
 .exit-button {
   width: 100%;
-  background-color: #1f2937; 
-  color: #9ca3af; 
+  background-color: #1f2937;
+  color: #9ca3af;
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
@@ -174,6 +235,6 @@
 }
 
 /* Espaciado general */
-.space-y-2 > * + * {
+.space-y-2>*+* {
   margin-top: 0.5rem;
 }
