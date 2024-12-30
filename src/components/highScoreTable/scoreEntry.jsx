@@ -1,38 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import './highScoreTable.css';
 
-const STORAGE_KEY = 'highScores';
+const STORAGE_KEY_PREFIX = 'highScores';
 const MAX_HIGH_SCORES = 10;
 
-const ScoreEntry = ({ score, onFinish, onNotWorthy }) => {
+const ScoreEntry = ({ score, onFinish, onNotWorthy, gameType, gameMode, region }) => {
   const [selectedChar, setSelectedChar] = useState(0);
   const [playerName, setPlayerName] = useState(['A', 'A', 'A']);
   const [blink, setBlink] = useState(true);
+  const [isComplete, setIsComplete] = useState(false);
 
+  const storageKey = `${STORAGE_KEY_PREFIX}_${gameType}_${gameMode}_${region}`;
   const availableChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   const isScoreWorthy = (score) => {
-    const savedScores = localStorage.getItem(STORAGE_KEY);
+    const savedScores = localStorage.getItem(storageKey);
     const currentScores = savedScores ? JSON.parse(savedScores) : [];
     if (currentScores.length < MAX_HIGH_SCORES) return true;
     return score > (currentScores[MAX_HIGH_SCORES - 1]?.score || 0);
   };
 
-  const saveScore = (name, score) => {
-    const savedScores = localStorage.getItem(STORAGE_KEY);
+  const saveScore = () => {
+    const savedScores = localStorage.getItem(storageKey);
     const currentScores = savedScores ? JSON.parse(savedScores) : [];
     
     const newScore = {
-      name,
+      name: playerName.join(''),
       score,
-      date: new Date().toISOString()
+      date: new Date().toISOString(),
+      region: region
     };
 
     const updatedScores = [...currentScores, newScore]
       .sort((a, b) => b.score - a.score)
       .slice(0, MAX_HIGH_SCORES);
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedScores));
+    localStorage.setItem(storageKey, JSON.stringify(updatedScores));
     
     if (onFinish) {
       onFinish();
@@ -52,9 +55,17 @@ const ScoreEntry = ({ score, onFinish, onNotWorthy }) => {
   }, [score, onNotWorthy]);
 
   useEffect(() => {
+    if (isComplete) {
+      saveScore();
+    }
+  }, [isComplete]);
+
+  useEffect(() => {
     const handleKeyPress = (e) => {
+      e.preventDefault();
+      
       switch (e.key) {
-        case 'ArrowUp':
+        case 'ArrowDown': {
           setPlayerName(prev => {
             const newName = [...prev];
             const currentCharIndex = availableChars.indexOf(newName[selectedChar]);
@@ -63,7 +74,8 @@ const ScoreEntry = ({ score, onFinish, onNotWorthy }) => {
             return newName;
           });
           break;
-        case 'ArrowDown':
+        }
+        case 'ArrowUp': {
           setPlayerName(prev => {
             const newName = [...prev];
             const currentCharIndex = availableChars.indexOf(newName[selectedChar]);
@@ -74,17 +86,22 @@ const ScoreEntry = ({ score, onFinish, onNotWorthy }) => {
             return newName;
           });
           break;
+        }
         case 'ArrowRight':
-          setSelectedChar(prev => (prev + 1) % 3);
+          if (selectedChar < 2) {
+            setSelectedChar(prev => prev + 1);
+          }
           break;
         case 'ArrowLeft':
-          setSelectedChar(prev => prev - 1 < 0 ? 2 : prev - 1);
+          if (selectedChar > 0) {
+            setSelectedChar(prev => prev - 1);
+          }
           break;
         case 'Enter':
           if (selectedChar === 2) {
-            saveScore(playerName.join(''), score);
+            setIsComplete(true);
           } else {
-            setSelectedChar(prev => (prev + 1) % 3);
+            setSelectedChar(prev => Math.min(prev + 1, 2));
           }
           break;
         default:
@@ -94,7 +111,7 @@ const ScoreEntry = ({ score, onFinish, onNotWorthy }) => {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [selectedChar, score, onFinish]);
+  }, [selectedChar]);
 
   return (
     <div className="high-score-container">

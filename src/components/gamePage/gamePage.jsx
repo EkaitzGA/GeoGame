@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { fetchAllCountries } from '../../utils/apiCall';
 import Button from '../button/button';
+import '../../index.css';
 
 const GamePage = ({
     title,
     onStartGame,
+    gameType,
     children
 }) => {
-  const [selectedRegions, setSelectedRegions] = useState(['All']);
+  const [selectedRegion, setSelectedRegion] = useState('All');
   const [selectedGameMode, setSelectedGameMode] = useState(null);
   const [countries, setCountries] = useState(null);
   const [filteredCountries, setFilteredCountries] = useState([]);
@@ -34,38 +36,21 @@ const GamePage = ({
 
   useEffect(() => {
     if (countries && countries.length > 0) {
-      if (selectedRegions.includes('All')) {
+      if (selectedRegion === 'All') {
         setFilteredCountries(countries);
         console.log('Mostrando todos los países:', countries.length);
       } else {
         const filtered = countries.filter(country => 
-          selectedRegions.includes(country.region)
+          country.region === selectedRegion
         );
         setFilteredCountries(filtered);
-        console.log(`Países filtrados de ${selectedRegions.join(' y ')}:`, filtered.length);
+        console.log(`Países filtrados de ${selectedRegion}:`, filtered.length);
       }
     }
-  }, [selectedRegions, countries]);
+  }, [selectedRegion, countries]);
 
   const handleRegionSelect = (region) => {
-    setSelectedRegions(prevSelected => {
-      if (region === 'All') {
-        return ['All'];
-      }
-      
-      if (prevSelected.includes('All')) {
-        return [region];
-      }
-
-      if (prevSelected.includes(region)) {
-        if (prevSelected.length === 1) {
-          return ['All'];
-        }
-        return prevSelected.filter(r => r !== region);
-      } else {
-        return [...prevSelected, region];
-      }
-    });
+    setSelectedRegion(region);
   };
 
   const handleGameModeSelect = (mode) => {
@@ -80,19 +65,19 @@ const GamePage = ({
     }
 
     if (filteredCountries.length > 0) {
-        onStartGame({
-          countries: filteredCountries,
-          gameMode: selectedGameMode,
-          regions: selectedRegions
-        })
+      onStartGame({
+        countries: filteredCountries,
+        gameMode: selectedGameMode,
+        region: selectedRegion,
+        gameType
+      });
       console.log('Iniciando juego con países:', filteredCountries.length);
       console.log('Modo de juego:', selectedGameMode);
-      // Aquí iría la lógica para iniciar el juego
     }
   };
 
   if (loading) {
-    return <div>Cargando países...</div>;
+    return <div>Loading countries...</div>;
   }
 
   return (
@@ -101,63 +86,51 @@ const GamePage = ({
       <div className="region-buttons">
         <Button 
           isSelectable
-          isSelected={selectedRegions.includes('All')}
+          isSelected={selectedRegion === 'All'}
           onClick={() => handleRegionSelect('All')}
         >
-          Todos los países
+          World
         </Button>
         <Button 
           isSelectable
-          isSelected={selectedRegions.includes('Europe')}
+          isSelected={selectedRegion === 'Europe'}
           onClick={() => handleRegionSelect('Europe')}
-          disabled={selectedRegions.includes('All')}
         >
-          Europa
+          Europe
         </Button>
         <Button 
           isSelectable
-          isSelected={selectedRegions.includes('Americas')}
+          isSelected={selectedRegion === 'Americas'}
           onClick={() => handleRegionSelect('Americas')}
-          disabled={selectedRegions.includes('All')}
         >
-          América
+          America
         </Button>
         <Button 
           isSelectable
-          isSelected={selectedRegions.includes('Asia')}
+          isSelected={selectedRegion === 'Asia'}
           onClick={() => handleRegionSelect('Asia')}
-          disabled={selectedRegions.includes('All')}
         >
           Asia
         </Button>
         <Button 
           isSelectable
-          isSelected={selectedRegions.includes('Africa')}
+          isSelected={selectedRegion === 'Africa'}
           onClick={() => handleRegionSelect('Africa')}
-          disabled={selectedRegions.includes('All')}
         >
           Africa
         </Button>
         <Button 
           isSelectable
-          isSelected={selectedRegions.includes('Oceania')}
+          isSelected={selectedRegion === 'Oceania'}
           onClick={() => handleRegionSelect('Oceania')}
-          disabled={selectedRegions.includes('All')}
         >
           Oceania
         </Button>
       </div>
 
-      <div className="selected-regions">
-        <p>
-          {selectedRegions.includes('All') 
-            ? 'Jugando con todos los países' 
-            : `Jugando con países de: ${selectedRegions.join(', ')}`}
-        </p>
-      </div>
 
       <div className="game-mode-buttons">
-        <h3 className="text-lg font-semibold mb-2">Selecciona el modo de juego:</h3>
+        <h3 className="game-mode-text">Select game mode:</h3>
         <div className="flex gap-4">
           <Button 
             isSelectable

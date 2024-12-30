@@ -8,6 +8,7 @@ export const fetchAllCountries = async () => {
     }
     const data = await response.json();
     console.log('Datos recibidos:', data.length, 'países');
+    return data
   } catch (error) {
     console.error('Error fetching countries:', error);
     throw error;

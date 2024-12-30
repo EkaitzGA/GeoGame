@@ -1,1 +1,1 @@
-Hay que comprobar que el componente de introducir la puntuación funcione ya que lo he separado de la tabla fija. Se introducirá en la lógica del juego, al final
+Arreglar el contador de las preguntas. Inicia en 3 en ambos modos. Además en Blitz, si no contestas suma 2, si contestas solo 1. Además de sumar 2, nunca se para el contador hasta contestar mínimo 1.  No funciona bien la introduccion del nombre, falla el úñtimo caracter. 

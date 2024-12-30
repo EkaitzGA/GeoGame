@@ -1,9 +1,9 @@
-.scoreboard-page {
+.scoreboards-container {
   min-height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 2rem;
   background: linear-gradient(
     45deg,
@@ -23,7 +23,21 @@
   100% { background-position: 0% 50%; }
 }
 
-/* Mejoramos el contenedor de puntuaciones */
+.tables-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.scoreboard-page {
+  min-height: auto;
+  width: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 .high-score-container {
   background-color: rgba(0, 0, 0, 0.8);
   padding: 2rem;
@@ -46,13 +60,20 @@
   letter-spacing: 0.2em;
 }
 
-
 .current-score {
   color: #fbbf24;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-size: 1.25rem;
   letter-spacing: 0.2em;
+}
+
+.regions-info {
+  color: #fcd34d;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
 }
 
 .name-entry-container {
@@ -78,6 +99,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
 }
 
 .character-box--selected {
@@ -99,7 +121,6 @@
   font-size: 0.875rem;
 }
 
-
 .table-header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -117,7 +138,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* Alineación de columnas */
 .table-header>div:first-child,
 .score-row>div:first-child {
   width: 6rem;
@@ -137,104 +157,75 @@
 }
 
 /* Colores para los rangos */
-.rank-1st {
-  color: #ef4444;
-}
+.rank-1st { color: #ef4444; }
+.rank-2nd { color: #f97316; }
+.rank-3rd { color: #eab308; }
+.rank-4th { color: #22c55e; }
+.rank-5th { color: #06b6d4; }
+.rank-6th,
+.rank-7th,
+.rank-8th,
+.rank-9th,
+.rank-10th { color: #ffffff; }
 
-.rank-2nd {
-  color: #f97316;
-}
-
-.rank-3rd {
-  color: #eab308;
-}
-
-.rank-4th {
-  color: #22c55e;
-}
-
-.rank-5th {
-  color: #06b6d4;
-}
-
-.rank-6th {
-  color: #ffffff;
-}
-
-.rank-7th {
-  color: #ffffff;
-}
-
-.rank-8th {
-  color: #ffffff;
-}
-
-.rank-9th {
-  color: #ffffff;
-}
-
-.rank-10th {
-  color: #ffffff;
-}
-
-/* Botones */
-.buttons-container {
-  margin-top: 2rem;
+/* Controles */
+.controls-container {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-}
-
-.try-again-button {
+  gap: 1rem;
+  margin-bottom: 2rem;
   width: 100%;
-  background-color: #7f1d1d;
-  color: #ffffff;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  max-width: 800px;
 }
 
-.scoreboard-button {
-  width: 100%;
-  background-color: #0b692b;
-  color: #ffffff;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+/* Selector de modo de juego */
+.game-mode-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.scoreboard-button:hover {
-  background-color: #138338;
-}
-
-.try-again-button:hover {
-  background-color: #991b1b;
-}
-
-.exit-button {
-  width: 100%;
+.mode-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
   background-color: #1f2937;
   color: #9ca3af;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.2s;
 }
 
-.exit-button:hover {
+.mode-button:hover {
   background-color: #374151;
 }
 
-.empty-score {
-  opacity: 0.5;
+.mode-button.active {
+  background-color: #7e22ce;
+  color: white;
 }
 
-/* Espaciado general */
-.space-y-2>*+* {
-  margin-top: 0.5rem;
+/* Selector de región */
+.region-selector {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.region-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background-color: #1f2937;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.region-button:hover {
+  background-color: #374151;
+}
+
+.region-button.active {
+  background-color: #7e22ce;
+  color: white;
 }

@@ -1,0 +1,63 @@
+.game-container {
+    padding: 1rem;
+    color: white;
+  }
+  
+  .game-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .header-info {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .score, .questions, .timer {
+    font-size: 1.25rem;
+  }
+  
+  .timer.danger {
+    color: #ef4444;
+  }
+  
+  .question-container {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .question-text {
+    font-size: 1.25rem;
+  }
+  
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .option-button {
+    padding: 1rem;
+    border: 1px solid #4b5563;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .option-button:hover:not(:disabled) {
+    background-color: #374151;
+  }
+  
+  .option-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .option-button.correct {
+    background-color: #15803d;
+  }
+
+  .option-button.incorrect {
+    background-color: #dc2626;
+  }

@@ -1,0 +1,12 @@
+.welcome-message{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.welcome-message h1,
+.welcome-message p{
+    color: white
+}
