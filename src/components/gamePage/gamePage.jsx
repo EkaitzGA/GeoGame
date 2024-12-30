@@ -4,13 +4,13 @@ import Button from '../button/button';
 import '../../index.css';
 
 const GamePage = ({
-    title,
-    onStartGame,
-    gameType,
-    children
+  title,
+  onStartGame,
+  gameType,
+  children
 }) => {
   const [selectedRegion, setSelectedRegion] = useState('All');
-  const [selectedGameMode, setSelectedGameMode] = useState(null);
+  const [selectedGameMode, setSelectedGameMode] = useState('relax');
   const [countries, setCountries] = useState(null);
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -40,7 +40,7 @@ const GamePage = ({
         setFilteredCountries(countries);
         console.log('Mostrando todos los países:', countries.length);
       } else {
-        const filtered = countries.filter(country => 
+        const filtered = countries.filter(country =>
           country.region === selectedRegion
         );
         setFilteredCountries(filtered);
@@ -55,14 +55,9 @@ const GamePage = ({
 
   const handleGameModeSelect = (mode) => {
     setSelectedGameMode(mode);
-    setError('');
   };
 
   const handleStartGame = () => {
-    if (!selectedGameMode) {
-      setError('Por favor, selecciona un modo de juego antes de comenzar');
-      return;
-    }
 
     if (filteredCountries.length > 0) {
       onStartGame({
@@ -84,42 +79,42 @@ const GamePage = ({
     <div className="game-page">
       <h1 className="game-title">{title}</h1>
       <div className="region-buttons">
-        <Button 
+        <Button
           isSelectable
           isSelected={selectedRegion === 'All'}
           onClick={() => handleRegionSelect('All')}
         >
           World
         </Button>
-        <Button 
+        <Button
           isSelectable
           isSelected={selectedRegion === 'Europe'}
           onClick={() => handleRegionSelect('Europe')}
         >
           Europe
         </Button>
-        <Button 
+        <Button
           isSelectable
           isSelected={selectedRegion === 'Americas'}
           onClick={() => handleRegionSelect('Americas')}
         >
           America
         </Button>
-        <Button 
+        <Button
           isSelectable
           isSelected={selectedRegion === 'Asia'}
           onClick={() => handleRegionSelect('Asia')}
         >
           Asia
         </Button>
-        <Button 
+        <Button
           isSelectable
           isSelected={selectedRegion === 'Africa'}
           onClick={() => handleRegionSelect('Africa')}
         >
           Africa
         </Button>
-        <Button 
+        <Button
           isSelectable
           isSelected={selectedRegion === 'Oceania'}
           onClick={() => handleRegionSelect('Oceania')}
@@ -132,14 +127,14 @@ const GamePage = ({
       <div className="game-mode-buttons">
         <h3 className="game-mode-text">Select game mode:</h3>
         <div className="flex gap-4">
-          <Button 
+          <Button
             isSelectable
             isSelected={selectedGameMode === 'blitz'}
             onClick={() => handleGameModeSelect('blitz')}
           >
             Blitz
           </Button>
-          <Button 
+          <Button
             isSelectable
             isSelected={selectedGameMode === 'relax'}
             onClick={() => handleGameModeSelect('relax')}
@@ -149,17 +144,11 @@ const GamePage = ({
         </div>
       </div>
 
-      {error && (
-        <div className="error-message text-red-500 mt-2">
-          {error}
-        </div>
-      )}
-
       {children}
 
       <div className="start-button mt-4">
         <Button onClick={handleStartGame}>
-          Iniciar Juego
+          PLAY
         </Button>
       </div>
     </div>

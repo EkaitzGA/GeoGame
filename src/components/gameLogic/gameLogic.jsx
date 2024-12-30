@@ -128,7 +128,7 @@ const GameLogic = ({ countries, gameMode, renderQuestion, renderOptions, onGameE
           <div className="questions">Question: {questionNumber}/{MAX_QUESTIONS}</div>
         </div>
         {gameMode === 'blitz' && (
-          <div className={`timer ${timeLeft <= 2 ? 'danger' : ''}`}>
+          <div className={`timer ${timeLeft <= 3 ? 'danger' : ''}`}>
             Time: {timeLeft}s
           </div>
         )}
@@ -145,11 +145,9 @@ const GameLogic = ({ countries, gameMode, renderQuestion, renderOptions, onGameE
             onClick={() => processAnswer(option)}
             disabled={!canAnswer}
             className={`option-button ${
-              !canAnswer && option.name.common === currentQuestion.name.common
-                ? 'correct'
-                : !canAnswer && selectedCountry?.name.common === option.name.common
-                  ? 'incorrect'
-                  : ''
+              !canAnswer && selectedCountry?.name.common === option.name.common
+                ? (option.name.common === currentQuestion.name.common ? 'correct' : 'incorrect')
+                : ''
             }`}
           >
             {renderOptions(option)}
