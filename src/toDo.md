@@ -1,1 +1,1 @@
-Estilizar los juegos 
+Estilizar los juegos. La pintuacion no se registra
