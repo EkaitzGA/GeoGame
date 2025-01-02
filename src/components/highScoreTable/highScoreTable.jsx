@@ -1,14 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import Button from '../button/button';
 import './highScoreTable.css';
 
 const STORAGE_KEY_PREFIX = 'highScores';
-const MAX_HIGH_SCORES = 10;
-const RANKS = [
-  '1ST', '2ND', '3RD', '4TH', '5TH',
-  '6TH', '7TH', '8TH', '9TH', '10TH'
-];
-const REGIONS = ['World', 'Africa', 'America', 'Asia', 'Europe', 'Oceania'];
+const RANKS = ['1ST', '2ND', '3RD', '4TH', '5TH', '6TH', '7TH', '8TH', '9TH', '10TH'];
+const REGIONS = ['World', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+
+const ScoreTable = ({ title, scores }) => (
+  <div className="high-score-container">
+    <h1 className="title">{title}<br />HALL OF FAME</h1>
+    <div className="table-header">
+      <div>RANK</div>
+      <div>SCORE</div>
+      <div>NAME</div>
+    </div>
+    <div>
+      {RANKS.map((rank, index) => {
+        const score = scores[index] || { score: '---', name: '---' };
+        return (
+          <div key={rank} className={`score-row rank-${rank.toLowerCase()}`}>
+            <div>{rank}</div>
+            <div>{score.score}</div>
+            <div>{score.name}</div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+);
 
 const ScoreBoard = () => {
   const [searchParams] = useSearchParams();
@@ -24,72 +44,56 @@ const ScoreBoard = () => {
     const flagsKey = `${STORAGE_KEY_PREFIX}_flags_${currentMode}_${currentRegion}`;
     const capitalsKey = `${STORAGE_KEY_PREFIX}_capitals_${currentMode}_${currentRegion}`;
 
-    const savedFlagsScores = localStorage.getItem(flagsKey);
-    const savedCapitalsScores = localStorage.getItem(capitalsKey);
+    try {
+      const savedFlagsScores = localStorage.getItem(flagsKey);
+      const savedCapitalsScores = localStorage.getItem(capitalsKey);
 
-    setFlagsScores(savedFlagsScores ? JSON.parse(savedFlagsScores) : []);
-    setCapitalsScores(savedCapitalsScores ? JSON.parse(savedCapitalsScores) : []);
+      setFlagsScores(savedFlagsScores ? JSON.parse(savedFlagsScores) : []);
+      setCapitalsScores(savedCapitalsScores ? JSON.parse(savedCapitalsScores) : []);
+    } catch (error) {
+      console.error('Error loading scores:', error);
+      setFlagsScores([]);
+      setCapitalsScores([]);
+    }
   }, [currentMode, currentRegion]);
 
-  const ScoreTable = ({ title, scores }) => (
-    <div className="scoreboard-page">
-      <div className="high-score-container">
-        <h1 className="title">{title} - HALL OF FAME</h1>
-        <div className="table-header">
-          <div>RANK</div>
-          <div>SCORE</div>
-          <div>NAME</div>
-        </div>
-        <div className="space-y-2">
-          {RANKS.map((rank, index) => {
-            const score = scores[index] || { score: '---', name: '---' };
-            return (
-              <div key={rank} className="score-row">
-                <div className={`rank-${rank.toLowerCase()}`}>{rank}</div>
-                <div className={`rank-${rank.toLowerCase()}`}>
-                  {score.score === '---' ? score.score : score.score}
-                </div>
-                <div className={`rank-${rank.toLowerCase()}`}>{score.name}</div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-
   return (
-    <div className="scoreboards-container">
-      <div className="controls-container">
-        <div className="game-mode-selector">
-          <button
-            className={`mode-button ${currentMode === 'blitz' ? 'active' : ''}`}
-            onClick={() => setCurrentMode('blitz')}
-          >
-            Blitz Mode
-          </button>
-          <button
-            className={`mode-button ${currentMode === 'relax' ? 'active' : ''}`}
-            onClick={() => setCurrentMode('relax')}
-          >
-            Relax Mode
-          </button>
-        </div>
-
-        <div className="region-selector">
-          {REGIONS.map(region => (
-            <button
-              key={region}
-              className={`region-button ${currentRegion === region ? 'active' : ''}`}
-              onClick={() => setCurrentRegion(region)}
+    <div className="scoreboards-wrapper">
+      <div className="scoreboards-header">
+        <div className="controls-section">
+          <div className="game-mode-selector">
+            <Button
+              onClick={() => setCurrentMode('blitz')}
+              isSelectable={true}
+              isSelected={currentMode === 'blitz'}
             >
-              {region}
-            </button>
-          ))}
+              Blitz Mode
+            </Button>
+            <Button
+              onClick={() => setCurrentMode('relax')}
+              isSelectable={true}
+              isSelected={currentMode === 'relax'}
+            >
+              Relax Mode
+            </Button>
+          </div>
+
+          <div className="region-selector">
+            {REGIONS.map(region => (
+              <Button
+                key={region}
+                onClick={() => setCurrentRegion(region)}
+                isSelectable={true}
+                isSelected={currentRegion === region}
+              >
+                {region}
+              </Button>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="tables-container">
+      <div className="scoreboards-content">
         <ScoreTable title="FLAGS" scores={flagsScores} />
         <ScoreTable title="CAPITALS" scores={capitalsScores} />
       </div>

@@ -1,3 +1,4 @@
+/* Estilos globales */
 * {
   margin: 0;
   padding: 0;
@@ -12,54 +13,11 @@ body {
 
 #root {
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     "nav"
-    "content"
-    "footer";
-  grid-template-rows: auto 1fr auto;
+    "content";
+  grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
   min-height: 100vh;
 }
 
-.game-page {
-  padding-top: 4rem;
-}
-
-.game-title {
-  color: white;
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-}
-
-.game-mode-text {
-  color: white;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.25rem;
-}
-
-/* Estilos para los contenedores de botones */
-.region-buttons {
-  margin: 2rem 0;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.game-mode-buttons {
-  margin: 3rem 0;
-  text-align: center;
-}
-
-.game-mode-buttons .flex {
-  justify-content: center;
-  gap: 2rem !important;
-}
-
-.start-button {
-  margin-top: 3rem;
-  display: flex;
-  justify-content: center;
-}

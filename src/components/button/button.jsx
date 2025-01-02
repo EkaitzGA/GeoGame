@@ -3,18 +3,19 @@ import './button.css';
 
 const Button = ({ 
   children, 
-  isSelectable = false, // Nueva prop para determinar si es un botón seleccionable
-  isSelected = false,   // Solo se usará si isSelectable es true
-  onClick 
+  isSelectable = false,
+  isSelected = false,
+  onClick,
+  className = '', // Para permitir clases adicionales si son necesarias
+  ...props // Para permitir props adicionales como type, disabled, etc.
 }) => {
-  const buttonClass = isSelectable 
-    ? `custom-button ${isSelected ? 'selected' : ''}` 
-    : 'custom-button';
+  const buttonClass = `custom-button ${isSelectable && isSelected ? 'selected' : ''} ${className}`.trim();
 
   return (
     <button 
       className={buttonClass}
       onClick={onClick}
+      {...props}
     >
       {children}
     </button>

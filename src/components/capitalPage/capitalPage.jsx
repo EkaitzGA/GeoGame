@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import GamePage from "../gamePage/gamePage";
 import GameLogic from '../gameLogic/gameLogic';
+import Button from '../button/button';
 import { useLocation } from 'react-router-dom';
-import './capitalPage.css';
+
 
 const CapitalPage = () => {
     const location = useLocation();
@@ -48,7 +49,7 @@ const CapitalPage = () => {
                         </div>
                     )}
                     optionsContainerClassName="capital-options-grid"
-                    optionItemClassName="capital-option-item"
+                    optionItemClassName="option-button"
                     onGameEnd={handleGameEnd}
                 />
             </div>
@@ -56,12 +57,15 @@ const CapitalPage = () => {
     }
 
     return (
-        <GamePage
-            key={location.key}
-            title="Capitals"
-            onStartGame={handleStartGame}
-            gameType="capitals"
-        />
+        <div className="controls-container">
+            <GamePage
+                key={location.key}
+                title="Capitals"
+                onStartGame={handleStartGame}
+                gameType="capitals"
+                ButtonComponent={Button}
+            />
+        </div>
     );
 };
 

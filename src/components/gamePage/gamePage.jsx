@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchAllCountries } from '../../utils/apiCall';
 import Button from '../button/button';
-import '../../index.css';
+import './gamePage.css';
 
 const GamePage = ({
   title,

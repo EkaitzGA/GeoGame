@@ -1,10 +1,7 @@
-.scoreboards-container {
-  min-height: 100vh;
+.scoreboards-wrapper {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
+  min-height: 100vh;
+  padding-top: 10rem;
   background: linear-gradient(
     45deg,
     #000000 0%,
@@ -17,117 +14,69 @@
   animation: gradientBG 10s ease infinite;
 }
 
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.scoreboards-header {
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
-.tables-container {
+.controls-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.game-mode-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.region-selector {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.scoreboards-content {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  width: 100%;
-}
-
-.scoreboard-page {
-  min-height: auto;
-  width: auto;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  padding: 0 1rem;
+  flex-wrap: wrap;
 }
 
 .high-score-container {
   background-color: rgba(0, 0, 0, 0.8);
   padding: 2rem;
   border-radius: 8px;
-  max-width: 28rem;
+  width: 100%;
+  max-width: 400px;
   font-family: monospace;
-  position: relative;
-  z-index: 1;
+  border: 1px solid #990099;
   box-shadow:
     0 0 10px rgba(255, 0, 255, 0.2),
     0 0 20px rgba(255, 0, 255, 0.1);
-  border: 1px solid #990099;
 }
 
 .title {
   color: #fcd34d;
   text-align: center;
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   letter-spacing: 0.2em;
-}
-
-.current-score {
-  color: #fbbf24;
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
-  letter-spacing: 0.2em;
-}
-
-.regions-info {
-  color: #fcd34d;
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  letter-spacing: 0.1em;
-}
-
-.name-entry-container {
-  margin-bottom: 2rem;
-}
-
-.name-entry-title {
-  text-align: center;
-  color: #e879f9;
-  margin-bottom: 1rem;
-}
-
-.name-entry-grid {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  font-size: 2.5rem;
-}
-
-.character-box {
-  width: 3rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-.character-box--selected {
-  color: white;
-}
-
-.character-box--hidden {
-  color: transparent;
-}
-
-.character-box--normal {
-  color: white;
-}
-
-.instructions {
-  text-align: center;
-  color: #6b7280;
-  margin-top: 1rem;
-  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
 .table-header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-bottom: 0.5rem;
   color: #e879f9;
   font-size: 1.25rem;
   letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+  text-align: left;
 }
 
 .score-row {
@@ -136,23 +85,6 @@
   letter-spacing: 0.2em;
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
-}
-
-.table-header>div:first-child,
-.score-row>div:first-child {
-  width: 6rem;
-  text-align: left;
-}
-
-.table-header>div:nth-child(2),
-.score-row>div:nth-child(2) {
-  width: 6rem;
-  text-align: right;
-}
-
-.table-header>div:last-child,
-.score-row>div:last-child {
-  padding-left: 1rem;
   text-align: left;
 }
 
@@ -168,64 +100,22 @@
 .rank-9th,
 .rank-10th { color: #ffffff; }
 
-/* Controles */
-.controls-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  width: 100%;
-  max-width: 800px;
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Selector de modo de juego */
-.game-mode-selector {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.mode-button {
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  background-color: #1f2937;
-  color: #9ca3af;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.mode-button:hover {
-  background-color: #374151;
-}
-
-.mode-button.active {
-  background-color: #7e22ce;
-  color: white;
-}
-
-/* Selector de región */
-.region-selector {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.region-button {
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  background-color: #1f2937;
-  color: #9ca3af;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.region-button:hover {
-  background-color: #374151;
-}
-
-.region-button.active {
-  background-color: #7e22ce;
-  color: white;
+@media (max-width: 768px) {
+  .scoreboards-wrapper {
+    padding-top: 4rem;
+  }
+  
+  .scoreboards-content {
+    gap: 1rem;
+  }
+  
+  .high-score-container {
+    margin-bottom: 1rem;
+  }
 }

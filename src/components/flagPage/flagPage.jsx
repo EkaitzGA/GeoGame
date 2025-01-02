@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import GamePage from "../gamePage/gamePage";
 import GameLogic from '../gameLogic/gameLogic';
+import Button from '../button/button';
 import { useLocation } from 'react-router-dom';
-import './flagPage.css';
+
 
 const FlagPage = () => {
     const location = useLocation();
@@ -50,7 +51,7 @@ const FlagPage = () => {
                         />
                     )}
                     optionsContainerClassName="flag-options-grid"
-                    optionItemClassName="flag-option-item"
+                    optionItemClassName="option-button"
                     onGameEnd={handleGameEnd}
                 />
             </div>
@@ -58,12 +59,15 @@ const FlagPage = () => {
     }
 
     return (
-        <GamePage
-            key={location.key}
-            title="Flags"
-            onStartGame={handleStartGame}
-            gameType="flags"
-        />
+        <div className="controls-container">
+            <GamePage
+                key={location.key}
+                title="Flags"
+                onStartGame={handleStartGame}
+                gameType="flags"
+                ButtonComponent={Button}
+            />
+        </div>
     );
 };
 

@@ -1,13 +1,20 @@
-/* components/Button/Button.css */
+/* button.css */
 .custom-button {
-    padding: 8px 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: white;
-    cursor: pointer;
-  }
-  
-  .custom-button.selected {
-    background-color: #e0e0e0;
-    border-color: #666;
-  }
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background-color: #1f2937;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.custom-button:hover {
+  background-color: #374151;
+}
+
+/* Para botones seleccionables cuando están activos/seleccionados */
+.custom-button.selected {
+  background-color: #7e22ce;
+  color: white;
+}

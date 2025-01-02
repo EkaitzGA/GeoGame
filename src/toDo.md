@@ -1,1 +1,1 @@
-Estilizar los juegos. La pintuacion no se registra
+Falta modificar el estilo del timer BLITZ. modificar el botón de play para que destaque más. El scoreentry está en cuenca
