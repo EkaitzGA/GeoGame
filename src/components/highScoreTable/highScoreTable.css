@@ -1,7 +1,8 @@
+/* highScoreTable.css */
 .scoreboards-wrapper {
   width: 100%;
   min-height: 100vh;
-  padding-top: 10rem;
+  padding-top: 5rem;
   background: linear-gradient(
     45deg,
     #000000 0%,
@@ -19,20 +20,20 @@
   margin-bottom: 2rem;
 }
 
-.controls-section {
+.scoreboard-controls {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-.game-mode-selector {
+.scoreboard-mode-selector {
   display: flex;
   justify-content: center;
   gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.region-selector {
+.scoreboard-region-selector {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -88,7 +89,6 @@
   text-align: left;
 }
 
-/* Colores para los rangos */
 .rank-1st { color: #ef4444; }
 .rank-2nd { color: #f97316; }
 .rank-3rd { color: #eab308; }
@@ -104,18 +104,4 @@
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
-}
-
-@media (max-width: 768px) {
-  .scoreboards-wrapper {
-    padding-top: 4rem;
-  }
-  
-  .scoreboards-content {
-    gap: 1rem;
-  }
-  
-  .high-score-container {
-    margin-bottom: 1rem;
-  }
 }

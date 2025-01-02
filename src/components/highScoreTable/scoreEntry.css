@@ -1,105 +1,104 @@
-/* Fondo del diálogo */
-.score-dialog-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-    z-index: 999;
-  }
-  
-  /* Contenedor del diálogo */
-  .score-dialog {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.95);
-    border: 1px solid #9333ea;
-    border-radius: 8px;
-    padding: 2rem;
-    width: 90%;
-    max-width: 500px;
-    z-index: 1000;
-    box-shadow: 0 0 20px rgba(147, 51, 234, 0.2);
-  }
-  
-  /* Header del diálogo */
-  .score-dialog-header {
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-  
-  .score-dialog-title {
-    color: #c084fc;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    font-family: monospace;
-    letter-spacing: 0.1em;
-  }
-  
-  .score-dialog-description {
-    color: #ffffff;
-    font-size: 1.1rem;
-    font-family: monospace;
-  }
-  
-  /* Footer y botones */
-  .score-dialog-footer {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-  
-  .dialog-button {
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    font-weight: 500;
-    font-family: monospace;
-    font-size: 1rem;
-    transition: all 0.2s;
-    cursor: pointer;
-    border: none;
-    letter-spacing: 0.05em;
-  }
-  
-  .dialog-button-primary {
-    background-color: #9333ea;
-    color: white;
-  }
-  
-  .dialog-button-primary:hover {
-    background-color: #7e22ce;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(147, 51, 234, 0.4);
-  }
-  
-  .dialog-button-secondary {
-    background-color: #4b5563;
-    color: white;
-  }
-  
-  .dialog-button-secondary:hover {
-    background-color: #374151;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(75, 85, 99, 0.4);
-  }
-  
-  /* Animaciones */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  .score-dialog-backdrop,
-  .score-dialog {
-    animation: fadeIn 0.3s ease-out;
-  }
+/* scoreEntry.css */
+.score-entry-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 40;
+}
+
+.score-entry-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 28rem;
+  font-family: monospace;
+  border: 1px solid #990099;
+  box-shadow:
+    0 0 10px rgba(255, 0, 255, 0.2),
+    0 0 20px rgba(255, 0, 255, 0.1);
+  z-index: 50;
+}
+
+.score-entry-title {
+  color: #fcd34d;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.2em;
+  line-height: 1.5;
+}
+
+.score-entry-score {
+  color: #fbbf24;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  letter-spacing: 0.2em;
+}
+
+.name-entry-container {
+  margin-bottom: 2rem;
+}
+
+.name-entry-title {
+  text-align: center;
+  color: #e879f9;
+  margin-bottom: 1rem;
+}
+
+.name-entry-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 2.5rem;
+}
+
+.character-box {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.character-box--selected {
+  color: white;
+  position: relative;
+}
+
+.character-box--selected::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background-color: #7e22ce;
+}
+
+.character-box--hidden {
+  color: transparent;
+}
+
+.character-box--normal {
+  color: white;
+}
+
+.score-entry-instructions {
+  text-align: center;
+  color: #6b7280;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}

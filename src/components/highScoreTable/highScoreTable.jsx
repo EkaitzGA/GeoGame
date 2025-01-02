@@ -60,8 +60,8 @@ const ScoreBoard = () => {
   return (
     <div className="scoreboards-wrapper">
       <div className="scoreboards-header">
-        <div className="controls-section">
-          <div className="game-mode-selector">
+        <div className="scoreboard-controls">
+          <div className="scoreboard-mode-selector">
             <Button
               onClick={() => setCurrentMode('blitz')}
               isSelectable={true}
@@ -78,7 +78,7 @@ const ScoreBoard = () => {
             </Button>
           </div>
 
-          <div className="region-selector">
+          <div className="scoreboard-region-selector">
             {REGIONS.map(region => (
               <Button
                 key={region}

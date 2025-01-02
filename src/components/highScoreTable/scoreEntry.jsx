@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './highScoreTable.css';
 import './scoreEntry.css';
 
 const STORAGE_KEY_PREFIX = 'highScores';
@@ -130,36 +129,39 @@ const ScoreEntry = ({ score, gameType, gameMode, region }) => {
   }, [selectedChar]);
 
   return (
-    <div className="high-score-container">
-      <h1 className="title">NEW HIGH SCORE!</h1>
+    <>
+      <div className="score-entry-backdrop" />
+      <div className="score-entry-container">
+        <h1 className="score-entry-title">NEW HIGH SCORE!</h1>
 
-      <div className="current-score">
-        YOUR SCORE {score}
-      </div>
+        <div className="score-entry-score">
+          YOUR SCORE {score}
+        </div>
 
-      <div className="name-entry-container">
-        <div className="name-entry-title">
-          ENTER YOUR NAME
-        </div>
-        <div className="name-entry-grid">
-          {playerName.map((char, index) => (
-            <div
-              key={index}
-              className={`character-box ${
-                index === selectedChar
-                  ? blink ? 'character-box--selected' : 'character-box--hidden'
-                  : 'character-box--normal'
-              }`}
-            >
-              {char}
-            </div>
-          ))}
-        </div>
-        <div className="instructions">
-          Use ← → to move, ↑ ↓ to change letter, ENTER to confirm
+        <div className="name-entry-container">
+          <div className="name-entry-title">
+            ENTER YOUR NAME
+          </div>
+          <div className="name-entry-grid">
+            {playerName.map((char, index) => (
+              <div
+                key={index}
+                className={`character-box ${
+                  index === selectedChar
+                    ? blink ? 'character-box--selected' : 'character-box--hidden'
+                    : 'character-box--normal'
+                }`}
+              >
+                {char}
+              </div>
+            ))}
+          </div>
+          <div className="score-entry-instructions">
+            Use ← → to move, ↑ ↓ to change letter, ENTER to confirm
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
