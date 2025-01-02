@@ -13,12 +13,12 @@ export default function NavBar() {
                     <li className="navBarAssets">
                         <Link to="/flags"
                             className={location.pathname === '/flags' ? 'active' : ''}
-                        >Banderas</Link>
+                        >Flags</Link>
                     </li>
                     <li className="navBarAssets">
                         <Link to="/capitals"
                             className={location.pathname === '/capitals' ? 'active' : ''}
-                        >Capitales</Link>
+                        >Capitals</Link>
                     </li>
                     <li className="navBarAssets">
                         <Link to="/scoreboard"

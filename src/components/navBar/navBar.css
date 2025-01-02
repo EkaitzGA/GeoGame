@@ -6,9 +6,11 @@
 }
 
 header {
-    background-color: #2c2c2c; /* Color de fondo claro */
+    background-color: black; /* Color de fondo claro */
+    position:fixed;
     display: flex;
     align-items: center;
+    z-index: 1000;
     justify-content: space-between;
     padding: 10px 20px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
@@ -33,20 +35,14 @@ ul.navBarList {
 
 li.navBarAssets a {
     text-decoration: none; /* Quita subrayado */
-    color: #c52424; /* Color azul para los enlaces */
+    color: #8a8787; /* Color azul para los enlaces */
     font-weight: bold;
     font-size: 16px;
     transition: color 0.3s ease; /* Transición suave */
 }
 
 li.navBarAssets a:hover {
-    color: #2f23d6; /* Color al pasar el ratón */
-    text-decoration: underline; /* Subrayado al hacer hover */
-}
-
-/* Para los ítems de navegación específicos */
-li.navBarAssets::marker {
-    color: #ff6347; /* Personaliza el marcador si es visible */
+    color: #990099 ; /* Color al pasar el ratón */
 }
 
 /* Items activos */

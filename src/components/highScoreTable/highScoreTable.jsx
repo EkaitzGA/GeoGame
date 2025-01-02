@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import './highScoreTable.css';
 
 const STORAGE_KEY_PREFIX = 'highScores';
@@ -10,18 +11,22 @@ const RANKS = [
 const REGIONS = ['World', 'Africa', 'America', 'Asia', 'Europe', 'Oceania'];
 
 const ScoreBoard = () => {
-  const [currentMode, setCurrentMode] = useState('blitz');
-  const [currentRegion, setCurrentRegion] = useState('All');
+  const [searchParams] = useSearchParams();
+  const initialGameMode = searchParams.get('gameMode') || 'blitz';
+  const initialRegion = searchParams.get('region') || 'World';
+  
+  const [currentMode, setCurrentMode] = useState(initialGameMode);
+  const [currentRegion, setCurrentRegion] = useState(initialRegion);
   const [flagsScores, setFlagsScores] = useState([]);
   const [capitalsScores, setCapitalsScores] = useState([]);
 
   useEffect(() => {
     const flagsKey = `${STORAGE_KEY_PREFIX}_flags_${currentMode}_${currentRegion}`;
     const capitalsKey = `${STORAGE_KEY_PREFIX}_capitals_${currentMode}_${currentRegion}`;
-    
+
     const savedFlagsScores = localStorage.getItem(flagsKey);
     const savedCapitalsScores = localStorage.getItem(capitalsKey);
-    
+
     setFlagsScores(savedFlagsScores ? JSON.parse(savedFlagsScores) : []);
     setCapitalsScores(savedCapitalsScores ? JSON.parse(savedCapitalsScores) : []);
   }, [currentMode, currentRegion]);
@@ -42,9 +47,7 @@ const ScoreBoard = () => {
               <div key={rank} className="score-row">
                 <div className={`rank-${rank.toLowerCase()}`}>{rank}</div>
                 <div className={`rank-${rank.toLowerCase()}`}>
-                  {typeof score.score === 'number' 
-                    ? String(score.score).padStart(3, '0') 
-                    : score.score}
+                  {score.score === '---' ? score.score : score.score}
                 </div>
                 <div className={`rank-${rank.toLowerCase()}`}>{score.name}</div>
               </div>
@@ -59,20 +62,20 @@ const ScoreBoard = () => {
     <div className="scoreboards-container">
       <div className="controls-container">
         <div className="game-mode-selector">
-          <button 
+          <button
             className={`mode-button ${currentMode === 'blitz' ? 'active' : ''}`}
             onClick={() => setCurrentMode('blitz')}
           >
             Blitz Mode
           </button>
-          <button 
+          <button
             className={`mode-button ${currentMode === 'relax' ? 'active' : ''}`}
             onClick={() => setCurrentMode('relax')}
           >
             Relax Mode
           </button>
         </div>
-        
+
         <div className="region-selector">
           {REGIONS.map(region => (
             <button

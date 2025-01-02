@@ -1,0 +1,68 @@
+/* capitalPage.css */
+.game-page {
+    padding-top: 15rem;
+}
+
+.region-buttons {
+    margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.game-mode-buttons {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.game-mode-text {
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.game-mode-buttons .flex {
+    justify-content: center;
+    gap: 2rem !important;
+}
+
+.start-button {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.options-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.option-button {
+    font-size: 1.25rem;
+    padding: 1.5rem;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.option-button:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .option-button {
+        font-size: 1.1rem;
+        min-height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .option-button {
+        font-size: 1rem;
+        min-height: 50px;
+        padding: 1rem;
+    }
+}

@@ -9,7 +9,7 @@ const GamePage = ({
   gameType,
   children
 }) => {
-  const [selectedRegion, setSelectedRegion] = useState('All');
+  const [selectedRegion, setSelectedRegion] = useState('World');
   const [selectedGameMode, setSelectedGameMode] = useState('relax');
   const [countries, setCountries] = useState(null);
   const [filteredCountries, setFilteredCountries] = useState([]);
@@ -36,7 +36,7 @@ const GamePage = ({
 
   useEffect(() => {
     if (countries && countries.length > 0) {
-      if (selectedRegion === 'All') {
+      if (selectedRegion === 'World') {
         setFilteredCountries(countries);
         console.log('Mostrando todos los países:', countries.length);
       } else {
@@ -77,12 +77,13 @@ const GamePage = ({
 
   return (
     <div className="game-page">
-      <h1 className="game-title">{title}</h1>
+      <h1 className="game-title">Choose your options</h1>
+      <h3 className="game-mode-text">Select region:</h3>
       <div className="region-buttons">
         <Button
           isSelectable
-          isSelected={selectedRegion === 'All'}
-          onClick={() => handleRegionSelect('All')}
+          isSelected={selectedRegion === 'World'}
+          onClick={() => handleRegionSelect('World')}
         >
           World
         </Button>

@@ -1,50 +1,66 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './highScoreTable.css';
+import './scoreEntry.css';
 
 const STORAGE_KEY_PREFIX = 'highScores';
 const MAX_HIGH_SCORES = 10;
 
-const ScoreEntry = ({ score, onFinish, onNotWorthy, gameType, gameMode, region }) => {
+const ScoreEntry = ({ score, gameType, gameMode, region }) => {
+  const navigate = useNavigate();
   const [selectedChar, setSelectedChar] = useState(0);
   const [playerName, setPlayerName] = useState(['A', 'A', 'A']);
   const [blink, setBlink] = useState(true);
   const [isComplete, setIsComplete] = useState(false);
 
+  if (!region) {
+    console.error('No region provided to ScoreEntry');
+  } 
+  
   const storageKey = `${STORAGE_KEY_PREFIX}_${gameType}_${gameMode}_${region}`;
   const availableChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   const isScoreWorthy = (score) => {
-    const savedScores = localStorage.getItem(storageKey);
-    const currentScores = savedScores ? JSON.parse(savedScores) : [];
-    if (currentScores.length < MAX_HIGH_SCORES) return true;
-    return score > (currentScores[MAX_HIGH_SCORES - 1]?.score || 0);
+    try {
+      const savedScores = localStorage.getItem(storageKey);
+      const currentScores = savedScores ? JSON.parse(savedScores) : [];
+      if (currentScores.length < MAX_HIGH_SCORES) return true;
+      return score > (currentScores[MAX_HIGH_SCORES - 1]?.score || 0);
+    } catch (error) {
+      console.error('Error checking score worthiness:', error);
+      return true;
+    }
   };
 
   const saveScore = () => {
-    const savedScores = localStorage.getItem(storageKey);
-    const currentScores = savedScores ? JSON.parse(savedScores) : [];
-    
-    const newScore = {
-      name: playerName.join(''),
-      score,
-      date: new Date().toISOString(),
-      region: region
-    };
+    try {
+      const savedScores = localStorage.getItem(storageKey);
+      const currentScores = savedScores ? JSON.parse(savedScores) : [];
+      
+      const newScore = {
+        name: playerName.join(''),
+        score,
+        date: new Date().toISOString(),
+        region
+      };
 
-    const updatedScores = [...currentScores, newScore]
-      .sort((a, b) => b.score - a.score)
-      .slice(0, MAX_HIGH_SCORES);
+      const updatedScores = [...currentScores, newScore]
+        .sort((a, b) => b.score - a.score)
+        .slice(0, MAX_HIGH_SCORES);
 
-    localStorage.setItem(storageKey, JSON.stringify(updatedScores));
-    
-    if (onFinish) {
-      onFinish();
+      localStorage.setItem(storageKey, JSON.stringify(updatedScores));
+      
+      // Redirigimos a scoreboard con los parámetros del juego actual
+      navigate(`/scoreboard?gameMode=${gameMode}&region=${region}`);
+    } catch (error) {
+      console.error('Error saving score:', error);
+      navigate('/scoreboard');
     }
   };
 
   useEffect(() => {
     if (!isScoreWorthy(score)) {
-      onNotWorthy?.();
+      navigate('/scoreboard');
       return;
     }
 
@@ -52,7 +68,7 @@ const ScoreEntry = ({ score, onFinish, onNotWorthy, gameType, gameMode, region }
       setBlink(prev => !prev);
     }, 500);
     return () => clearInterval(interval);
-  }, [score, onNotWorthy]);
+  }, [score]);
 
   useEffect(() => {
     if (isComplete) {
@@ -118,7 +134,7 @@ const ScoreEntry = ({ score, onFinish, onNotWorthy, gameType, gameMode, region }
       <h1 className="title">NEW HIGH SCORE!</h1>
 
       <div className="current-score">
-        YOUR SCORE {String(score).padStart(5, '0')}
+        YOUR SCORE {score}
       </div>
 
       <div className="name-entry-container">
