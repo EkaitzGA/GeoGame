@@ -52,11 +52,26 @@
     gap: 1rem;
 }
 
-.start-button {
+.start-button button {
     margin-top: 3rem;
-    display: flex;
-    justify-content: center;
-}
+    font-size: 2rem;  /* Hacer el texto más grande */
+    padding: 1.5rem 4rem; /* Hacer el botón más grande */
+    animation: playButtonBlink 1s infinite; /* Animación continua */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Efecto de brillo */
+    transition: all 0.3s ease;
+  }
+  
+  
+  @keyframes playButtonBlink {
+    0%, 100% {
+      background-color: #420479;
+      transform: scale(1);
+    }
+    50% {
+      background-color: #7e22ce;
+      transform: scale(1.15);
+    }
+  }
 
 .capital-question-text, .flag-question-text {
     font-size: 30px;

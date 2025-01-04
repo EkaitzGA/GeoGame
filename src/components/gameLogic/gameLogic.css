@@ -12,15 +12,15 @@
 
 .header-info {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   background-color: #7e22ce;
   border-radius: 0.25rem;
-  padding: 0.5rem;
+  padding: 1rem;
 }
 
 .score,
 .questions {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   
 }
 
@@ -54,7 +54,7 @@
 
 .option-button {
   padding: 1rem;
-  border: 1px solid #4b5563;
+  border: 1px solid #7e22ce;
   border-radius: 0.25rem;
   cursor: pointer;
   transition: background-color 0.2s;
