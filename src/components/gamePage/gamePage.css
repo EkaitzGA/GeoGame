@@ -22,14 +22,14 @@
     color: white;
     text-align: center;
     margin-bottom: 2rem;
-    font-size: 2rem;
+    font-size: 40px;
 }
 
 .game-mode-text {
     color: white;
     text-align: center;
     margin-bottom: 1.5rem;
-    font-size: 1.25rem;
+    font-size: 30px
 }
 
 /* Layout de contenedores de botones */
@@ -56,4 +56,8 @@
     margin-top: 3rem;
     display: flex;
     justify-content: center;
+}
+
+.capital-question-text, .flag-question-text {
+    font-size: 30px;
 }

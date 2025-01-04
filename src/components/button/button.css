@@ -1,16 +1,19 @@
 /* button.css */
 .custom-button {
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  background-color: #1f2937;
-  color: #9ca3af;
+  padding: 1rem 2rem;  /* Duplicado el padding */
+  border-radius: 0.5rem;  /* Aumentado para mantener proporciones */
+  background-color: #374151;
+  color: white;
   cursor: pointer;
   transition: all 0.2s;
   border: none;
+  font-size: 1.25rem;  /* Aumentado el tamaño de fuente */
+  min-width: 200px;    /* Añadido ancho mínimo */
+  min-height: 60px;    /* Añadido altura mínima */
 }
 
 .custom-button:hover {
-  background-color: #374151;
+  background-color: #420479;
 }
 
 /* Para botones seleccionables cuando están activos/seleccionados */

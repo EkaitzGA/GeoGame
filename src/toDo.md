@@ -1,1 +1,1 @@
-Falta modificar el estilo del timer BLITZ. modificar el botón de play para que destaque más. El scoreentry está en cuenca
+Me gustaría añadir una especie de FAQ para explicar los modos de juego. Posible cambio de fuente para los botones

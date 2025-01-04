@@ -15,8 +15,9 @@ const GameLogic = ({ countries, gameMode, renderQuestion, renderOptions, onGameE
   const [questionNumber, setQuestionNumber] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCountry, setSelectedCountry] = useState(null);
+  const [feedbackAnimation, setFeedbackAnimation] = useState(null);
+  const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
   
-  // Usar una ref para evitar múltiples actualizaciones
   const isProcessingAnswer = useRef(false);
 
   const generateQuestion = () => {
@@ -61,12 +62,24 @@ const GameLogic = ({ countries, gameMode, renderQuestion, renderOptions, onGameE
 
     if (selected.name.common === currentQuestion.name.common) {
       setScore(prev => prev + 100);
+      setFeedbackAnimation('correct');
+      setTimeout(() => {
+        setFeedbackAnimation(null);
+        setQuestionNumber(prev => prev + 1);
+        generateQuestion();
+      }, 1500);
+    } else {
+      setFeedbackAnimation('incorrect');
+      setTimeout(() => {
+        setFeedbackAnimation(null);
+        setShowCorrectAnswer(true);
+        setTimeout(() => {
+          setShowCorrectAnswer(false);
+          setQuestionNumber(prev => prev + 1);
+          generateQuestion();
+        }, 1500);
+      }, 1500);
     }
-
-    setTimeout(() => {
-      setQuestionNumber(prev => prev + 1);
-      generateQuestion();
-    }, 2000);
   };
 
   const handleTimeOut = () => {
@@ -127,11 +140,6 @@ const GameLogic = ({ countries, gameMode, renderQuestion, renderOptions, onGameE
           <div className="score">Score: {score}</div>
           <div className="questions">Question: {questionNumber}/{MAX_QUESTIONS}</div>
         </div>
-        {gameMode === 'blitz' && (
-          <div className={`timer ${timeLeft <= 3 ? 'danger' : ''}`}>
-            Time: {timeLeft}s
-          </div>
-        )}
       </div>
 
       <div className="question-container">
@@ -148,12 +156,34 @@ const GameLogic = ({ countries, gameMode, renderQuestion, renderOptions, onGameE
               !canAnswer && selectedCountry?.name.common === option.name.common
                 ? (option.name.common === currentQuestion.name.common ? 'correct' : 'incorrect')
                 : ''
+            } ${
+              showCorrectAnswer && option.name.common === currentQuestion.name.common ? 'blink' : ''
             }`}
           >
             {renderOptions(option)}
           </button>
         ))}
       </div>
+
+      {gameMode === 'blitz' && (
+        <div className="timer-container">
+          <div className={`timer ${timeLeft <= 3 ? 'danger' : ''}`}>
+            {timeLeft}s
+          </div>
+        </div>
+      )}
+
+      {feedbackAnimation && (
+        <div className="feedback-animation">
+          <img 
+            src={feedbackAnimation === 'correct' 
+              ? '../../src/assets/correct.gif'
+              : '../../src/assets/incorrect.gif'
+            } 
+            alt={feedbackAnimation === 'correct' ? 'Correct answer!' : 'Wrong answer!'} 
+          />
+        </div>
+      )}
     </div>
   );
 };

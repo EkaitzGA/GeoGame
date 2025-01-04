@@ -15,7 +15,7 @@ header {
     z-index: 1000;
     justify-content: space-between;
     padding: 10px 20px;
-    font-family: Arial, sans-serif;
+    font-family: 'VT323', monospace;
 }
 
 header img {
@@ -38,7 +38,7 @@ li.navBarAssets a {
     text-decoration: none; /* Quita subrayado */
     color: #8a8787; /* Color azul para los enlaces */
     font-weight: bold;
-    font-size: 16px;
+    font-size: 26px;
     transition: color 0.3s ease; /* Transición suave */
 }
 

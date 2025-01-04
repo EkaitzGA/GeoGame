@@ -7,14 +7,16 @@
     margin-bottom: 6rem;
 }
 
-.welcome-message h1,
-.welcome-message p {
-    color: white;
-
-}
 
 .welcome-message h1 {
     margin-bottom: 4rem;
+    font-size: 50px;
+    color: white;
+}
+.welcome-message p {
+    margin-bottom: 2rem;
+    font-size: 30px;
+    color: white;
 }
 
 main {
