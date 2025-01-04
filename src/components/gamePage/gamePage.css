@@ -54,7 +54,7 @@
 
 .start-button button {
     margin-top: 3rem;
-    font-size: 2rem;  /* Hacer el texto más grande */
+    font-size: 2.5rem;  /* Hacer el texto más grande */
     padding: 1.5rem 4rem; /* Hacer el botón más grande */
     animation: playButtonBlink 1s infinite; /* Animación continua */
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Efecto de brillo */
