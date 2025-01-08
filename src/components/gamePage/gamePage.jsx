@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchAllCountries } from '../../utils/apiCall';
 import Button from '../button/button';
+import GameInfo from './gameInfo';
 import './gamePage.css';
 
 const GamePage = ({
@@ -142,10 +143,13 @@ const GamePage = ({
           >
             Relax
           </Button>
+          <GameInfo />
         </div>
       </div>
 
       {children}
+
+     
 
       <div className="start-button mt-4">
         <Button onClick={handleStartGame}>

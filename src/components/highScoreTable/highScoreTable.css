@@ -1,4 +1,3 @@
-/* highScoreTable.css */
 .scoreboards-wrapper {
   width: 100%;
   min-height: 100vh;
@@ -12,7 +11,7 @@
     #000000 100%
   );
   background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
+  animation: gradientBG 5s ease infinite;
 }
 
 .scoreboards-header {

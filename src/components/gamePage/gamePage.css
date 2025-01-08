@@ -54,10 +54,10 @@
 
 .start-button button {
     margin-top: 3rem;
-    font-size: 2.5rem;  /* Hacer el texto más grande */
-    padding: 1.5rem 4rem; /* Hacer el botón más grande */
-    animation: playButtonBlink 1s infinite; /* Animación continua */
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Efecto de brillo */
+    font-size: 2.5rem;  
+    padding: 1.5rem 4rem; 
+    animation: playButtonBlink 1s infinite; 
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
     transition: all 0.3s ease;
   }
   

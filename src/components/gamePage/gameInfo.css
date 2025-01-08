@@ -1,0 +1,84 @@
+.info-container {
+    display: inline-flex;
+    align-items: center;
+}
+
+.info-button {
+    background-color: #374151;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2.5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    height: 100%;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.info-button:hover {
+    background-color: #6b21a8;
+}
+
+.info-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+}
+
+.info-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 40rem;
+    background-color: white;
+    color: black;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    z-index: 50;
+}
+
+.mode-info {
+    padding-bottom: 2rem;
+}
+
+.mode-info:not(:last-of-type) {
+    border-bottom: 3px solid #7e22ce;
+    margin-bottom: 2rem;
+}
+
+.info-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.info-description {
+    font-size: 1.5rem;
+    color: black;
+    line-height: 1.8;
+}
+
+.close-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: black;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}

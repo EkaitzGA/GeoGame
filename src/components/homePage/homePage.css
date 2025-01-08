@@ -10,9 +10,10 @@
 
 .welcome-message h1 {
     margin-bottom: 4rem;
-    font-size: 50px;
+    font-size: 80px;
     color: white;
 }
+
 .welcome-message p {
     margin-bottom: 2rem;
     font-size: 30px;
@@ -68,11 +69,8 @@ h1 {
     font-weight: bold;
     text-shadow:
         2px 2px 4px rgba(0, 0, 0, 0.8),
-        /* Sombra principal */
         0 0 20px rgba(0, 0, 0, 0.6),
-        /* Resplandor suave */
         -1px -1px 0 rgba(0, 0, 0, 0.4);
-    /* Borde sutil */
     text-align: center;
     z-index: 1;
     pointer-events: none;
