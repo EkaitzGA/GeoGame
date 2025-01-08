@@ -1,1 +1,1 @@
-Me gustaría añadir una especie de FAQ para explicar los modos de juego. Posible cambio de fuente para los botones
+Me gustaría añadir una especie de FAQ para explicar los modos de juego. Posible cambio de fuente para los botones. Hacer responsive todo y hacer la documentación
