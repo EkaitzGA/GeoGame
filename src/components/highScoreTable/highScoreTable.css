@@ -104,3 +104,32 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+@media (max-width: 768px) {
+  .scoreboards-wrapper {
+    padding-top: 2rem;
+  }
+
+  .scoreboard-controls {
+    padding: 0 0.5rem;
+  }
+
+  .scoreboard-mode-selector,
+  .scoreboard-region-selector {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .high-score-container {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .table-header,
+  .score-row {
+    font-size: 1rem;
+  }
+}

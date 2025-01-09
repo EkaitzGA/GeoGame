@@ -77,3 +77,43 @@
 .capital-question-text, .flag-question-text {
     font-size: 30px;
 }
+
+@media (max-width: 768px) {
+    .controls-container {
+      padding-top: 2rem;
+    }
+  
+    .game-page {
+      padding: 0 0.5rem;
+    }
+  
+    .game-title {
+      font-size: 30px;
+      margin-bottom: 2rem;
+    }
+  
+    .game-mode-text {
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+  
+    .region-buttons {
+      margin: 1rem 0;
+      gap: 0.5rem;
+    }
+  
+    .game-mode-buttons .flex {
+      padding-left: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .start-button button {
+      font-size: 2rem;
+      padding: 1rem 3rem;
+    }
+  
+    .capital-question-text, .flag-question-text {
+      font-size: 24px;
+    }
+  }

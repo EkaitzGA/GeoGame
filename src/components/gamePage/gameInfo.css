@@ -82,3 +82,35 @@
     border-radius: 50%;
     transition: background-color 0.2s;
 }
+
+@media (max-width: 768px) {
+    .info-modal {
+      max-height: 80vh;
+      width: 85%;
+      padding: 1.5rem;
+      overflow-y: auto;
+    }
+  
+    .mode-info {
+      padding-bottom: 1rem;
+    }
+  
+    .mode-info:not(:last-of-type) {
+      margin-bottom: 1rem;
+    }
+  
+    .info-title {
+      font-size: 1.25rem;
+    }
+  
+    .info-description {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  
+    .close-icon {
+      top: 0.5rem;
+      right: 0.5rem;
+      font-size: 1.5rem;
+    }
+  }

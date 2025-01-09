@@ -175,3 +175,36 @@
     opacity: 0.5;
   }
 }
+
+@media (max-width: 768px) {
+  .game-container {
+    padding-top: 2rem;
+  }
+
+  .header-info {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .score, .questions {
+    font-size: 1.2rem;
+  }
+
+  .options-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .option-button {
+    height: 100px;
+  }
+
+  .option-button img {
+    max-width: 120px;
+    max-height: 70px;
+  }
+
+  .timer {
+    font-size: 6rem;
+  }
+}

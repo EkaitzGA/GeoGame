@@ -50,3 +50,25 @@ li.navBarAssets a.active {
     color: rgb(240, 236, 232); 
     font-weight: bold;
 }
+
+@media (max-width: 768px) {
+    header {
+      position: relative;
+      padding: 5px 10px;
+    }
+  
+    nav.navBar {
+      width: 100%;
+    }
+  
+    ul.navBarList {
+      flex-direction: row;
+      justify-content: space-around;
+      width: 100%;
+      gap: 10px;
+    }
+  
+    li.navBarAssets a {
+      font-size: 20px;
+    }
+  }

@@ -21,3 +21,9 @@ body {
   min-height: 100vh;
 }
 
+@media (max-width: 768px) {
+  #root {
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+}
+

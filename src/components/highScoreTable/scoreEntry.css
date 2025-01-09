@@ -1,4 +1,3 @@
-/* scoreEntry.css */
 .score-entry-backdrop {
   position: fixed;
   top: 0;
@@ -101,4 +100,28 @@
   margin-top: 1rem;
   font-size: 0.875rem;
   letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .score-entry-container {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .score-entry-title {
+    font-size: 1.5rem;
+  }
+
+  .score-entry-score {
+    font-size: 1rem;
+  }
+
+  .name-entry-grid {
+    font-size: 2rem;
+  }
+
+  .character-box {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
