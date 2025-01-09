@@ -41,6 +41,7 @@ const GameInfo = () => {
                             <div key={mode.title} className={`mode-info ${index > 0 ? 'mt-4' : ''}`}>
                                 <h3 className="info-title">{mode.title}</h3>
                                 <p className="info-description">{mode.description}</p>
+                                <p>*Oceania will have only 10 questions instead of 20</p>
                             </div>
                         ))}
 

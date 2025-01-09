@@ -14,8 +14,8 @@ const ScoreEntry = ({ score, gameType, gameMode, region }) => {
 
   if (!region) {
     console.error('No region provided to ScoreEntry');
-  } 
-  
+  }
+
   const storageKey = `${STORAGE_KEY_PREFIX}_${gameType}_${gameMode}_${region}`;
   const availableChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
@@ -35,7 +35,7 @@ const ScoreEntry = ({ score, gameType, gameMode, region }) => {
     try {
       const savedScores = localStorage.getItem(storageKey);
       const currentScores = savedScores ? JSON.parse(savedScores) : [];
-      
+
       const newScore = {
         name: playerName.join(''),
         score,
@@ -48,8 +48,7 @@ const ScoreEntry = ({ score, gameType, gameMode, region }) => {
         .slice(0, MAX_HIGH_SCORES);
 
       localStorage.setItem(storageKey, JSON.stringify(updatedScores));
-      
-      // Redirigimos a scoreboard con los parámetros del juego actual
+
       navigate(`/scoreboard?gameMode=${gameMode}&region=${region}`);
     } catch (error) {
       console.error('Error saving score:', error);
@@ -78,7 +77,7 @@ const ScoreEntry = ({ score, gameType, gameMode, region }) => {
   useEffect(() => {
     const handleKeyPress = (e) => {
       e.preventDefault();
-      
+
       switch (e.key) {
         case 'ArrowDown': {
           setPlayerName(prev => {
@@ -94,8 +93,8 @@ const ScoreEntry = ({ score, gameType, gameMode, region }) => {
           setPlayerName(prev => {
             const newName = [...prev];
             const currentCharIndex = availableChars.indexOf(newName[selectedChar]);
-            const nextCharIndex = currentCharIndex - 1 < 0 
-              ? availableChars.length - 1 
+            const nextCharIndex = currentCharIndex - 1 < 0
+              ? availableChars.length - 1
               : currentCharIndex - 1;
             newName[selectedChar] = availableChars[nextCharIndex];
             return newName;
@@ -146,11 +145,10 @@ const ScoreEntry = ({ score, gameType, gameMode, region }) => {
             {playerName.map((char, index) => (
               <div
                 key={index}
-                className={`character-box ${
-                  index === selectedChar
+                className={`character-box ${index === selectedChar
                     ? blink ? 'character-box--selected' : 'character-box--hidden'
                     : 'character-box--normal'
-                }`}
+                  }`}
               >
                 {char}
               </div>

@@ -6,8 +6,8 @@ const Button = ({
   isSelectable = false,
   isSelected = false,
   onClick,
-  className = '', // Para permitir clases adicionales si son necesarias
-  ...props // Para permitir props adicionales como type, disabled, etc.
+  className = '', 
+  ...props 
 }) => {
   const buttonClass = `custom-button ${isSelectable && isSelected ? 'selected' : ''} ${className}`.trim();
 

@@ -1,14 +1,13 @@
-/* General reset de márgenes y paddings */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 body {
-    overflow-y: auto; /* Restauramos el scroll vertical */
+    overflow-y: auto; 
 }
 header {
-    background-color: transparent; /* Color de fondo claro */
+    background-color: transparent; 
     position:fixed;
     display: flex;
     align-items: center;
@@ -19,7 +18,7 @@ header {
 }
 
 header img {
-    height: 50px; /* Ajusta el tamaño del logo */
+    height: 50px; 
 }
 
 nav.navBar {
@@ -30,24 +29,24 @@ nav.navBar {
 
 ul.navBarList {
     display: flex;
-    list-style: none; /* Elimina los bullets */
-    gap: 20px; /* Espacio entre los elementos */
+    list-style: none; 
+    gap: 20px; 
 }
 
 li.navBarAssets a {
-    text-decoration: none; /* Quita subrayado */
-    color: #8a8787; /* Color azul para los enlaces */
+    text-decoration: none; 
+    color: #8a8787; 
     font-weight: bold;
     font-size: 26px;
-    transition: color 0.3s ease; /* Transición suave */
+    transition: color 0.3s ease; 
 }
 
 li.navBarAssets a:hover {
-    color: #990099 ; /* Color al pasar el ratón */
+    color: #990099 ; 
 }
 
-/* Items activos */
+
 li.navBarAssets a.active {
-    color: rgb(240, 236, 232); /* Color distintivo para el estado activo */
+    color: rgb(240, 236, 232); 
     font-weight: bold;
 }

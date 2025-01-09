@@ -126,8 +126,8 @@ const GamePage = ({
       </div>
 
 
-      <div className="game-mode-buttons">
         <h3 className="game-mode-text">Select game mode:</h3>
+        <div className="game-mode-buttons">
         <div className="flex gap-4">
           <Button
             isSelectable
